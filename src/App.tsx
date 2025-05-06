@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Documentation from "./pages/Documentation";
 import ApiSandbox from "./pages/ApiSandbox";
+import ApiReference from "./pages/ApiReference";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -21,6 +22,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/documentation" element={<Documentation />} />
           <Route path="/api-sandbox" element={<ApiSandbox />} />
+          <Route path="/api-reference" element={<ApiReference />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
