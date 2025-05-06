@@ -44,6 +44,9 @@ charge = example.Charge.create(
 
 print(charge)`;
 
+  const authCode = `curl https://api.example.com/v1/balance \\
+  -H "Authorization: Bearer sk_test_4eC39HqLyjWDarjtT1zdp7dc"`;
+
   return (
     <div className="space-y-8">
       <div className="prose max-w-none">
@@ -53,8 +56,11 @@ print(charge)`;
         </p>
       </div>
 
-      <Tabs defaultValue="getting-started" className="w-full"
-        onValueChange={(value) => setActiveTab(value)}>
+      <Tabs 
+        defaultValue="getting-started" 
+        className="w-full"
+        onValueChange={(value) => setActiveTab(value)}
+      >
         <TabsList className="mb-6 grid grid-cols-4 w-full">
           <TabsTrigger value="getting-started">Getting Started</TabsTrigger>
           <TabsTrigger value="authentication">Authentication</TabsTrigger>
@@ -142,7 +148,7 @@ print(charge)`;
           
           <CodeBlock
             language="bash"
-            code="curl https://api.example.com/v1/balance \\\n  -H \"Authorization: Bearer sk_test_4eC39HqLyjWDarjtT1zdp7dc\""
+            code={authCode}
             className="mt-6"
           />
         </TabsContent>
