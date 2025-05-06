@@ -1,100 +1,331 @@
 
-import React from "react";
+import React, { useState } from "react";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Button } from "@/components/ui/button";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Form, FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
 import { Badge } from "@/components/ui/badge";
-import { Link } from "react-router-dom";
+import { Card, CardContent } from "@/components/ui/card";
+import { CodeBlock } from "@/components/CodeBlock";
+import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 
 export function ApiReferenceContent() {
+  const [activeEndpoint, setActiveEndpoint] = useState("customer-info");
+  const [method, setMethod] = useState("GET");
+  const [response, setResponse] = useState<any>(null);
+  const [loading, setLoading] = useState(false);
+  const [activeTab, setActiveTab] = useState("request");
+  
+  const form = useForm({
+    defaultValues: {
+      customerId: "12345",
+      uidType: "phone", 
+      uidValue: "+91987654321"
+    }
+  });
+  
+  const handleSelectEndpoint = (endpoint: string) => {
+    setActiveEndpoint(endpoint);
+    setResponse(null);
+  };
+  
+  const handleSendRequest = () => {
+    setLoading(true);
+    const formValues = form.getValues();
+    
+    // Simulate API call
+    setTimeout(() => {
+      if (activeEndpoint === "customer-info") {
+        if (formValues.customerId === "12345") {
+          setResponse({
+            status: 200,
+            data: {
+              customer: {
+                id: "12345",
+                name: "John Doe",
+                email: "john.doe@example.com",
+                phone: "+91987654321",
+                created_at: "2023-06-15T10:30:00Z",
+                status: "active"
+              }
+            }
+          });
+          toast.success("API request successful");
+        } else {
+          setResponse({
+            status: 404,
+            error: {
+              code: "CUSTOMER_NOT_FOUND",
+              message: "Customer with ID not found"
+            }
+          });
+          toast.error("API request failed: Customer not found");
+        }
+      } else {
+        setResponse({
+          status: 200,
+          data: {
+            merchant: {
+              id: "M789012",
+              business_name: "Acme Corporation",
+              tax_id: "ABCDE1234F",
+              status: "active",
+              created_at: "2022-10-05T14:20:30Z"
+            }
+          }
+        });
+        toast.success("API request successful");
+      }
+      setLoading(false);
+      setActiveTab("response");
+    }, 1000);
+  };
+
+  const getRequestDetails = () => {
+    const formValues = form.getValues();
+    
+    if (activeEndpoint === "customer-info") {
+      return {
+        url: `/customers?uidType=${formValues.uidType}&uidValue=${formValues.uidValue}`,
+        method: "GET",
+        description: "Get customer information from CAS",
+        curlCommand: `curl --location --request GET 'https://api.example.com/customers?uidType=${formValues.uidType}&uidValue=${formValues.uidValue}' \\
+--header 'Authorization: Bearer YOUR_TOKEN' \\
+--header 'Content-Type: application/json'`
+      };
+    } else {
+      return {
+        url: "/merchant/info",
+        method: "GET",
+        description: "Get own legal customer information from CAS",
+        curlCommand: `curl --location --request GET 'https://api.example.com/merchant/info' \\
+--header 'Authorization: Bearer YOUR_TOKEN' \\
+--header 'Content-Type: application/json'`
+      };
+    }
+  };
+
+  const requestDetails = getRequestDetails();
+  
+  const getResponseColor = (status?: number) => {
+    if (!status) return "";
+    if (status >= 200 && status < 300) return "text-green-500";
+    if (status >= 400 && status < 500) return "text-red-500";
+    return "text-orange-500";
+  };
+
+  const getResponseBadgeColor = (status?: number) => {
+    if (!status) return "";
+    if (status >= 200 && status < 300) return "bg-green-100 text-green-800";
+    if (status >= 400 && status < 500) return "bg-red-100 text-red-800";
+    return "bg-orange-100 text-orange-800";
+  };
+
   return (
     <div className="space-y-8">
       <div className="prose max-w-none">
-        <h1 className="text-3xl font-bold mb-2">API Reference</h1>
+        <h1 className="text-3xl font-bold mb-2">API Reference & Sandbox</h1>
         <p className="text-gray-600 mb-8">
-          Complete reference for all available API endpoints and methods.
+          Test API endpoints and view the reference documentation in one place.
         </p>
       </div>
 
-      {/* "Get customer information" Method */}
-      <div className="space-y-4">
-        <h2 className="text-2xl font-semibold border-b pb-2">"Get customer information" Method</h2>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="lg:col-span-1">
+          <Card>
+            <CardContent className="pt-6">
+              <h3 className="text-lg font-medium mb-4">Available Endpoints</h3>
+              <div className="space-y-2">
+                <div 
+                  className={`flex items-center p-2 rounded-md cursor-pointer ${activeEndpoint === "customer-info" ? "bg-blue-50 text-blue-700" : "hover:bg-gray-50"}`}
+                  onClick={() => handleSelectEndpoint("customer-info")}
+                >
+                  <Badge className="bg-green-100 text-green-800 mr-2">GET</Badge>
+                  Get Customer Info
+                </div>
+                <div 
+                  className={`flex items-center p-2 rounded-md cursor-pointer ${activeEndpoint === "merchant-info" ? "bg-blue-50 text-blue-700" : "hover:bg-gray-50"}`}
+                  onClick={() => handleSelectEndpoint("merchant-info")}
+                >
+                  <Badge className="bg-green-100 text-green-800 mr-2">GET</Badge>
+                  Get Merchant Info
+                </div>
+                <div 
+                  className={`flex items-center p-2 rounded-md cursor-pointer hover:bg-gray-50`}
+                >
+                  <Badge className="bg-yellow-100 text-yellow-800 mr-2">POST</Badge>
+                  Register Customer
+                </div>
+                <div 
+                  className={`flex items-center p-2 rounded-md cursor-pointer hover:bg-gray-50`}
+                >
+                  <Badge className="bg-red-100 text-red-800 mr-2">DELETE</Badge>
+                  Delete Customer
+                </div>
+              </div>
+              
+              <h3 className="text-lg font-medium my-4">Sample IDs</h3>
+              <div className="space-y-2 text-sm">
+                <div className="p-2 border rounded-md">
+                  <div className="font-medium">12345</div>
+                  <div className="text-gray-500">Success response (200)</div>
+                </div>
+                <div className="p-2 border rounded-md">
+                  <div className="font-medium">99999</div>
+                  <div className="text-gray-500">Not found (404)</div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
         
-        <p>
-          For more details, see <Link to="/api-reference" className="text-blue-600 hover:underline">API Reference</Link>.
-        </p>
-
-        <Table>
-          <TableBody>
-            <TableRow>
-              <TableCell className="font-medium bg-gray-50 w-1/6">Description</TableCell>
-              <TableCell>Get customer information from CAS</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell className="font-medium bg-gray-50">Client</TableCell>
-              <TableCell>Participant's application</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell className="font-medium bg-gray-50">Server</TableCell>
-              <TableCell>CAS</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell className="font-medium bg-gray-50">Method</TableCell>
-              <TableCell>GET</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell className="font-medium bg-gray-50">URL</TableCell>
-              <TableCell className="space-y-4">
-                <p className="font-mono text-sm">/customers?uidType=&uidValue=</p>
-                <p>OR</p>
-                <p className="font-mono text-sm">/customers/{"{id}"} – direct link returned in customer registration request (the "Register customer information" method)</p>
-              </TableCell>
-            </TableRow>
-          </TableBody>
-        </Table>
-      </div>
-
-      {/* "Get customer information" Method for Merchant */}
-      <div className="space-y-4">
-        <h2 className="text-2xl font-semibold border-b pb-2">"Get customer information" Method for Merchant</h2>
-        
-        <p>
-          For more details, see <Link to="/api-reference" className="text-blue-600 hover:underline">API Reference</Link>.
-        </p>
-
-        <Table>
-          <TableBody>
-            <TableRow>
-              <TableCell className="font-medium bg-gray-50 w-1/6">Description</TableCell>
-              <TableCell>Get own legal customer information from CAS</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell className="font-medium bg-gray-50">Client</TableCell>
-              <TableCell>Participant's application</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell className="font-medium bg-gray-50">Server</TableCell>
-              <TableCell>CAS</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell className="font-medium bg-gray-50">Method</TableCell>
-              <TableCell>GET</TableCell>
-            </TableRow>
-          </TableBody>
-        </Table>
-      </div>
-
-      <div className="mt-8">
-        <h3 className="text-xl font-medium mb-4">Additional Resources</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="border rounded-md p-6 bg-white">
-            <h4 className="text-lg font-medium mb-2">API Authentication</h4>
-            <p className="text-gray-600 mb-4">Learn how to authenticate your API requests using our secure authentication methods.</p>
-            <Link to="/documentation" className="text-blue-600 hover:underline">View authentication docs →</Link>
-          </div>
-          <div className="border rounded-md p-6 bg-white">
-            <h4 className="text-lg font-medium mb-2">Test in Sandbox</h4>
-            <p className="text-gray-600 mb-4">Try out our APIs in a safe testing environment before going to production.</p>
-            <Link to="/api-sandbox" className="text-blue-600 hover:underline">Go to API Sandbox →</Link>
-          </div>
+        <div className="lg:col-span-2">
+          <Card>
+            <CardContent className="pt-6">
+              <div className="mb-6">
+                <h2 className="text-xl font-semibold mb-2">{activeEndpoint === "customer-info" ? "Get Customer Information" : "Get Merchant Information"}</h2>
+                <p className="text-sm text-gray-500">
+                  {requestDetails.url}
+                </p>
+                <p className="text-sm text-gray-600 mt-2">
+                  {requestDetails.description}
+                </p>
+              </div>
+              
+              <Form {...form}>
+                <div className="space-y-4 mb-6">
+                  <div>
+                    <FormLabel className="block text-sm font-medium text-gray-700 mb-1">
+                      Method
+                    </FormLabel>
+                    <Select 
+                      defaultValue={requestDetails.method} 
+                      onValueChange={setMethod}
+                      disabled
+                    >
+                      <SelectTrigger className="w-full">
+                        <SelectValue placeholder="Select method" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="GET">GET</SelectItem>
+                        <SelectItem value="POST">POST</SelectItem>
+                        <SelectItem value="PUT">PUT</SelectItem>
+                        <SelectItem value="DELETE">DELETE</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  
+                  {activeEndpoint === "customer-info" && (
+                    <>
+                      <FormField
+                        control={form.control}
+                        name="customerId"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Customer ID</FormLabel>
+                            <FormControl>
+                              <Input {...field} placeholder="Enter customer ID" />
+                            </FormControl>
+                          </FormItem>
+                        )}
+                      />
+                      
+                      <FormField
+                        control={form.control}
+                        name="uidType"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>UID Type</FormLabel>
+                            <Select 
+                              defaultValue={field.value} 
+                              onValueChange={field.onChange}
+                            >
+                              <SelectTrigger className="w-full">
+                                <SelectValue placeholder="Select UID type" />
+                              </SelectTrigger>
+                              <SelectContent>
+                                <SelectItem value="phone">Phone</SelectItem>
+                                <SelectItem value="email">Email</SelectItem>
+                                <SelectItem value="pan">PAN</SelectItem>
+                              </SelectContent>
+                            </Select>
+                          </FormItem>
+                        )}
+                      />
+                      
+                      <FormField
+                        control={form.control}
+                        name="uidValue"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>UID Value</FormLabel>
+                            <FormControl>
+                              <Input {...field} placeholder="Enter UID value" />
+                            </FormControl>
+                          </FormItem>
+                        )}
+                      />
+                    </>
+                  )}
+                </div>
+              </Form>
+              
+              <Button 
+                className="w-full mb-6" 
+                onClick={handleSendRequest}
+                disabled={loading}
+              >
+                {loading ? "Sending Request..." : "Send Request"}
+              </Button>
+              
+              <Tabs defaultValue="request" className="w-full" value={activeTab} onValueChange={setActiveTab}>
+                <TabsList className="grid grid-cols-2 mb-4">
+                  <TabsTrigger value="request">Request</TabsTrigger>
+                  <TabsTrigger value="response">Response</TabsTrigger>
+                </TabsList>
+                
+                <TabsContent value="request" className="space-y-4">
+                  <div className="bg-gray-50 rounded-md border">
+                    <div className="text-sm font-medium p-4 border-b">cURL</div>
+                    <CodeBlock
+                      language="bash"
+                      code={requestDetails.curlCommand}
+                    />
+                  </div>
+                </TabsContent>
+                
+                <TabsContent value="response" className="space-y-4">
+                  {response ? (
+                    <div className="space-y-4">
+                      <div className="flex items-center">
+                        <Badge className={getResponseBadgeColor(response.status)}>
+                          {response.status}
+                        </Badge>
+                        <span className={`ml-2 text-sm font-medium ${getResponseColor(response.status)}`}>
+                          {response.status >= 200 && response.status < 300 ? "Success" : "Error"}
+                        </span>
+                      </div>
+                      <div className="bg-gray-50 rounded-md border">
+                        <div className="text-sm font-medium p-4 border-b">Response</div>
+                        <CodeBlock
+                          language="json"
+                          code={JSON.stringify(response.status >= 200 && response.status < 300 ? response.data : response.error, null, 2)}
+                        />
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="text-center py-8 text-gray-500 border rounded-md">
+                      Click "Send Request" to see the response here
+                    </div>
+                  )}
+                </TabsContent>
+              </Tabs>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </div>
