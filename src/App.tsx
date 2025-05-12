@@ -13,6 +13,7 @@ import InboundCreditTransfer from "./pages/InboundCreditTransfer";
 import PaymentReturnReversal from "./pages/PaymentReturnReversal";
 import ErrorHandling from "./pages/ErrorHandling";
 import CertificationChecklist from "./pages/CertificationChecklist";
+import XmlMessages from "./pages/XmlMessages";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -32,6 +33,7 @@ const App = () => (
           <Route path="/simulators/inbound-credit-transfer" element={<InboundCreditTransfer />} />
           <Route path="/simulators/payment-return-reversal" element={<PaymentReturnReversal />} />
           <Route path="/simulators/error-handling" element={<ErrorHandling />} />
+          <Route path="/xml-messages" element={<XmlMessages />} />
           <Route path="/certification" element={<CertificationChecklist />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

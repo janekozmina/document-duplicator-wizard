@@ -1,7 +1,7 @@
 
 import React from "react";
 import { cn } from "@/lib/utils";
-import { FileText, Home, PlayCircle, Code, File, CheckSquare } from "lucide-react";
+import { FileText, Home, PlayCircle, Code, File, CheckSquare, FileCode } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 
 type NavItem = {
@@ -30,6 +30,11 @@ const navItems: NavItem[] = [
     title: "Simulators",
     href: "/simulators",
     icon: PlayCircle,
+  },
+  {
+    title: "XML Messages",
+    href: "/xml-messages",
+    icon: FileCode,
   },
   {
     title: "Certification Checklist",
