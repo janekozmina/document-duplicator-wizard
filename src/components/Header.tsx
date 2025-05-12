@@ -7,24 +7,11 @@ export function Header() {
   return (
     <div className="flex items-center justify-between border-b p-4">
       <div className="flex items-center">
-        <div className="text-green-600 mr-2">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24" 
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <rect x="3" y="3" width="7" height="7"></rect>
-            <rect x="14" y="3" width="7" height="7"></rect>
-            <rect x="14" y="14" width="7" height="7"></rect>
-            <rect x="3" y="14" width="7" height="7"></rect>
-          </svg>
-        </div>
+        <img 
+          src="/lovable-uploads/efd7a396-6cbc-4768-92e4-6d588941ebe9.png" 
+          alt="Raast Logo" 
+          className="h-10 mr-3" 
+        />
         <h1 className="font-semibold text-lg">Central Bank</h1>
       </div>
       <div className="relative w-72">

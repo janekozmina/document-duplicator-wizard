@@ -1,7 +1,7 @@
 
 import React from "react";
 import { cn } from "@/lib/utils";
-import { File, FileText, Home, PlayCircle, Code } from "lucide-react";
+import { FileText, Home, PlayCircle, Code, File, CheckSquare } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 
 type NavItem = {
@@ -12,7 +12,7 @@ type NavItem = {
 
 const navItems: NavItem[] = [
   {
-    title: "Dashboard",
+    title: "Home",
     href: "/",
     icon: Home,
   },
@@ -32,9 +32,9 @@ const navItems: NavItem[] = [
     icon: PlayCircle,
   },
   {
-    title: "API Sandbox",
-    href: "/api-sandbox",
-    icon: Code,
+    title: "Certification Checklist",
+    href: "/certification",
+    icon: CheckSquare,
   },
 ];
 
