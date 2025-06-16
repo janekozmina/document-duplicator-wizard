@@ -1,7 +1,7 @@
 
 import React from "react";
 import { cn } from "@/lib/utils";
-import { FileText, Home, PlayCircle, Code, File, CheckSquare, FileCode } from "lucide-react";
+import { FileText, Home, PlayCircle, Code, File, CheckSquare, FileCode, BookOpen } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 
 type NavItem = {
@@ -15,6 +15,11 @@ const navItems: NavItem[] = [
     title: "Home",
     href: "/",
     icon: Home,
+  },
+  {
+    title: "Getting Started",
+    href: "/onboarding",
+    icon: BookOpen,
   },
   {
     title: "Documentation",

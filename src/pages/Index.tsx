@@ -12,7 +12,9 @@ import {
   ArrowUpRight,
   ArrowDownRight,
   Bell,
-  Calendar
+  Calendar,
+  BookOpen,
+  Zap
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -52,6 +54,29 @@ const Index = () => {
                 </Button>
               </div>
             </div>
+
+            {/* New Getting Started Section */}
+            <Card className="bg-gradient-to-r from-blue-50 to-green-50 border-blue-200">
+              <CardHeader>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center">
+                    <BookOpen className="h-6 w-6 text-blue-600 mr-3" />
+                    <div>
+                      <CardTitle className="text-xl text-blue-900">New to the platform?</CardTitle>
+                      <CardDescription className="text-blue-700">
+                        Take our guided tour to learn about all features
+                      </CardDescription>
+                    </div>
+                  </div>
+                  <Button asChild className="bg-blue-600 hover:bg-blue-700">
+                    <Link to="/onboarding">
+                      <Zap className="h-4 w-4 mr-2" />
+                      Start Tour
+                    </Link>
+                  </Button>
+                </div>
+              </CardHeader>
+            </Card>
             
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               {/* Main content - 2/3 width */}
