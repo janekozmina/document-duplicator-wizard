@@ -36,7 +36,7 @@ const Index = () => {
           <div className="max-w-6xl mx-auto space-y-8">
             <div className="flex justify-between items-center">
               <div>
-                <h1 className="text-3xl font-bold">Welcome to Sandbox Portal</h1>
+                <h1 className="text-3xl font-bold">Welcome to Participants Portal</h1>
                 <p className="text-gray-600 mt-1">
                   Access development documentation, test APIs, and run simulations
                 </p>

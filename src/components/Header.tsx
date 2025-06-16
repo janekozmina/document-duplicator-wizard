@@ -7,11 +7,6 @@ export function Header() {
   return (
     <div className="flex items-center justify-between border-b p-4">
       <div className="flex items-center">
-        <img 
-          src="/lovable-uploads/efd7a396-6cbc-4768-92e4-6d588941ebe9.png" 
-          alt="Raast Logo" 
-          className="h-10 mr-3" 
-        />
         <h1 className="font-semibold text-lg">Central Bank</h1>
       </div>
       <div className="relative w-72">

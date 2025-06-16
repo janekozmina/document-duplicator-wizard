@@ -6,7 +6,7 @@ export function Sidebar() {
   return (
     <div className="w-[260px] border-r bg-white">
       <div className="p-4">
-        <h2 className="text-lg font-medium mb-4">Sandbox Portal</h2>
+        <h2 className="text-lg font-medium mb-4">Participants Portal</h2>
         <SidebarNav />
       </div>
     </div>
