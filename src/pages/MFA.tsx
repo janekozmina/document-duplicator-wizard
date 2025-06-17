@@ -32,21 +32,21 @@ const MFA = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
+    <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: '#C8B5A0' }}>
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <div className="flex justify-center mb-4">
-            <div className="p-3 bg-blue-100 rounded-full">
-              <Shield className="h-8 w-8 text-blue-600" />
+            <div className="p-3 rounded-full" style={{ backgroundColor: '#1B365D' }}>
+              <Shield className="h-8 w-8 text-white" />
             </div>
           </div>
-          <h1 className="text-2xl font-bold">Two-Factor Authentication</h1>
-          <p className="text-gray-600 mt-2">Participants Portal</p>
+          <h1 className="text-2xl font-bold" style={{ color: '#1B365D' }}>Two-Factor Authentication</h1>
+          <p className="mt-2" style={{ color: '#5A4A3A' }}>Central Bank - Participants Portal</p>
         </div>
         
-        <Card>
+        <Card className="shadow-lg border-0">
           <CardHeader>
-            <CardTitle>Enter Verification Code</CardTitle>
+            <CardTitle style={{ color: '#1B365D' }}>Enter Verification Code</CardTitle>
             <CardDescription>
               Please enter the 6-digit code sent to your authenticator app or SMS
             </CardDescription>
@@ -79,7 +79,8 @@ const MFA = () => {
                   variant="ghost"
                   size="sm"
                   onClick={handleResendCode}
-                  className="text-blue-600 hover:text-blue-700"
+                  className="hover:bg-yellow-500/10"
+                  style={{ color: '#D4AF37' }}
                 >
                   Resend Code
                 </Button>
@@ -87,7 +88,8 @@ const MFA = () => {
               
               <Button 
                 type="submit" 
-                className="w-full" 
+                className="w-full text-white hover:opacity-90 transition-opacity" 
+                style={{ backgroundColor: '#1B365D' }}
                 disabled={otpValue.length !== 6 || isVerifying}
               >
                 {isVerifying ? "Verifying..." : "Verify Code"}
@@ -96,7 +98,8 @@ const MFA = () => {
               <div className="text-center">
                 <Link 
                   to="/login" 
-                  className="inline-flex items-center text-sm text-gray-600 hover:text-gray-800"
+                  className="inline-flex items-center text-sm hover:opacity-75 transition-opacity"
+                  style={{ color: '#5A4A3A' }}
                 >
                   <ArrowLeft className="h-4 w-4 mr-1" />
                   Back to Login
@@ -104,12 +107,12 @@ const MFA = () => {
               </div>
             </form>
             
-            <div className="mt-6 p-4 bg-blue-50 rounded-lg">
-              <h3 className="font-medium text-blue-900 mb-2">Test Credentials:</h3>
-              <div className="text-sm text-blue-800 space-y-1">
+            <div className="mt-6 p-4 rounded-lg" style={{ backgroundColor: '#E8DCC0' }}>
+              <h3 className="font-medium mb-2" style={{ color: '#1B365D' }}>Test Credentials:</h3>
+              <div className="text-sm space-y-1" style={{ color: '#5A4A3A' }}>
                 <p><strong>Valid OTP:</strong> 123456</p>
                 <p><strong>Invalid OTP:</strong> Any other 6-digit code</p>
-                <p className="text-xs mt-2 text-blue-600">
+                <p className="text-xs mt-2" style={{ color: '#8B7355' }}>
                   Use code "123456" to successfully complete MFA verification
                 </p>
               </div>

@@ -19,16 +19,16 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
+    <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: '#C8B5A0' }}>
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <h1 className="text-2xl font-bold">Central Bank</h1>
-          <p className="text-gray-600 mt-2">Participants Portal</p>
+          <h1 className="text-2xl font-bold" style={{ color: '#1B365D' }}>Central Bank</h1>
+          <p className="mt-2" style={{ color: '#5A4A3A' }}>Participants Portal</p>
         </div>
         
-        <Card>
+        <Card className="shadow-lg border-0">
           <CardHeader>
-            <CardTitle>Sign In</CardTitle>
+            <CardTitle style={{ color: '#1B365D' }}>Sign In</CardTitle>
             <CardDescription>
               Enter your credentials to access the Participants Portal
             </CardDescription>
@@ -36,7 +36,7 @@ const Login = () => {
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email" style={{ color: '#1B365D' }}>Email</Label>
                 <Input
                   id="email"
                   type="email"
@@ -48,7 +48,7 @@ const Login = () => {
               </div>
               
               <div className="space-y-2">
-                <Label htmlFor="password">Password</Label>
+                <Label htmlFor="password" style={{ color: '#1B365D' }}>Password</Label>
                 <div className="relative">
                   <Input
                     id="password"
@@ -85,33 +85,37 @@ const Login = () => {
                     Remember me
                   </Label>
                 </div>
-                <Link to="/forgot-password" className="text-sm text-blue-600 hover:underline">
+                <Link to="/forgot-password" className="text-sm hover:underline" style={{ color: '#D4AF37' }}>
                   Forgot password?
                 </Link>
               </div>
               
-              <Button type="submit" className="w-full">
+              <Button 
+                type="submit" 
+                className="w-full text-white hover:opacity-90 transition-opacity"
+                style={{ backgroundColor: '#1B365D' }}
+              >
                 Sign In
               </Button>
               
               <div className="text-center">
                 <p className="text-sm text-gray-600">
                   Don't have an account?{" "}
-                  <Link to="/register" className="text-blue-600 hover:underline">
+                  <Link to="/register" className="hover:underline" style={{ color: '#D4AF37' }}>
                     Sign up
                   </Link>
                 </p>
               </div>
             </form>
             
-            <div className="mt-6 p-4 bg-green-50 rounded-lg">
-              <h3 className="font-medium text-green-900 mb-2">Test Credentials:</h3>
-              <div className="text-sm text-green-800 space-y-1">
+            <div className="mt-6 p-4 rounded-lg" style={{ backgroundColor: '#E8DCC0' }}>
+              <h3 className="font-medium mb-2" style={{ color: '#1B365D' }}>Test Credentials:</h3>
+              <div className="text-sm space-y-1" style={{ color: '#5A4A3A' }}>
                 <p><strong>Email:</strong> admin@centralbank.gov</p>
                 <p><strong>Password:</strong> CentralBank2024!</p>
-                <p className="text-xs mt-2 text-green-600">
+                <p className="text-xs mt-2" style={{ color: '#8B7355' }}>
                   Use these credentials to test the login flow, followed by{" "}
-                  <Link to="/mfa" className="underline font-medium">
+                  <Link to="/mfa" className="underline font-medium" style={{ color: '#D4AF37' }}>
                     MFA verification
                   </Link>
                 </p>
