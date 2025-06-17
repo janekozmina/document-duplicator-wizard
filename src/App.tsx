@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -15,6 +14,7 @@ import ErrorHandling from "./pages/ErrorHandling";
 import CertificationChecklist from "./pages/CertificationChecklist";
 import XmlMessages from "./pages/XmlMessages";
 import Login from "./pages/Login";
+import MFA from "./pages/MFA";
 import Onboarding from "./pages/Onboarding";
 import NotFound from "./pages/NotFound";
 import ChatbotWidget from "./components/ChatbotWidget";
@@ -30,6 +30,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/mfa" element={<MFA />} />
           <Route path="/onboarding" element={<Onboarding />} />
           <Route path="/documentation" element={<Documentation />} />
           <Route path="/api-reference" element={<ApiReference />} />

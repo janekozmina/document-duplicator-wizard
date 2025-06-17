@@ -103,6 +103,20 @@ const Login = () => {
                 </p>
               </div>
             </form>
+            
+            <div className="mt-6 p-4 bg-green-50 rounded-lg">
+              <h3 className="font-medium text-green-900 mb-2">Test Credentials:</h3>
+              <div className="text-sm text-green-800 space-y-1">
+                <p><strong>Email:</strong> admin@centralbank.gov</p>
+                <p><strong>Password:</strong> CentralBank2024!</p>
+                <p className="text-xs mt-2 text-green-600">
+                  Use these credentials to test the login flow, followed by{" "}
+                  <Link to="/mfa" className="underline font-medium">
+                    MFA verification
+                  </Link>
+                </p>
+              </div>
+            </div>
           </CardContent>
         </Card>
       </div>
