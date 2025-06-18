@@ -61,9 +61,10 @@ export function SidebarNav() {
             className={cn(
               "flex items-center py-2 px-3 text-sm font-medium rounded-md",
               location.pathname === item.href
-                ? "bg-green-50 text-green-600"
+                ? "text-white"
                 : "text-gray-700 hover:bg-gray-100"
             )}
+            style={location.pathname === item.href ? { backgroundColor: '#1B365D' } : {}}
           >
             <item.icon className="mr-2 h-4 w-4" />
             {item.title}

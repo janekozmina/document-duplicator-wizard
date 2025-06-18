@@ -129,11 +129,11 @@ const Onboarding = () => {
             <Card className="mb-8">
               <CardHeader className="text-center">
                 <div className="flex justify-center mb-4">
-                  <div className="p-4 bg-blue-100 rounded-full">
-                    <step.icon className="h-8 w-8 text-blue-600" />
+                  <div className="p-4 rounded-full" style={{ backgroundColor: '#1B365D' }}>
+                    <step.icon className="h-8 w-8 text-white" />
                   </div>
                 </div>
-                <CardTitle className="text-2xl">{step.title}</CardTitle>
+                <CardTitle className="text-2xl" style={{ color: '#1B365D' }}>{step.title}</CardTitle>
                 <CardDescription className="text-lg">{step.description}</CardDescription>
               </CardHeader>
               <CardContent className="text-center">
@@ -150,18 +150,18 @@ const Onboarding = () => {
                   )}
                   
                   {step.link ? (
-                    <Button asChild>
+                    <Button asChild style={{ backgroundColor: '#1B365D' }} className="text-white hover:opacity-90">
                       <Link to={step.link}>
                         {step.action}
                         <ArrowRight className="h-4 w-4 ml-2" />
                       </Link>
                     </Button>
                   ) : currentStep === onboardingSteps.length - 1 ? (
-                    <Button onClick={completeOnboarding}>
+                    <Button onClick={completeOnboarding} style={{ backgroundColor: '#1B365D' }} className="text-white hover:opacity-90">
                       Complete Tour
                     </Button>
                   ) : (
-                    <Button onClick={nextStep}>
+                    <Button onClick={nextStep} style={{ backgroundColor: '#1B365D' }} className="text-white hover:opacity-90">
                       {step.action}
                       <ArrowRight className="h-4 w-4 ml-2" />
                     </Button>
@@ -176,26 +176,32 @@ const Onboarding = () => {
                   key={stepItem.id}
                   className={`cursor-pointer transition-all ${
                     index === currentStep 
-                      ? 'ring-2 ring-blue-500 bg-blue-50' 
+                      ? 'ring-2 border-2' 
                       : index < currentStep 
                         ? 'bg-green-50 border-green-200' 
                         : 'hover:bg-gray-50'
                   }`}
-                  onClick={() => setCurrentStep(index)}
+                  style={index === currentStep ? { 
+                    ringColor: '#1B365D', 
+                    borderColor: '#1B365D',
+                    backgroundColor: '#E8DCC0'
+                  } : {}}
                 >
                   <CardContent className="p-4">
                     <div className="flex items-center">
                       <div className={`p-2 rounded-full mr-3 ${
                         index === currentStep 
-                          ? 'bg-blue-500 text-white' 
+                          ? 'text-white' 
                           : index < currentStep 
                             ? 'bg-green-500 text-white' 
                             : 'bg-gray-200 text-gray-600'
-                      }`}>
+                      }`}
+                      style={index === currentStep ? { backgroundColor: '#1B365D' } : {}}
+                      >
                         <stepItem.icon className="h-4 w-4" />
                       </div>
                       <div>
-                        <h3 className="font-medium text-sm">{stepItem.title}</h3>
+                        <h3 className="font-medium text-sm" style={index === currentStep ? { color: '#1B365D' } : {}}>{stepItem.title}</h3>
                         <p className="text-xs text-gray-600">{stepItem.description}</p>
                       </div>
                     </div>

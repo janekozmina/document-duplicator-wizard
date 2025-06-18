@@ -121,7 +121,8 @@ const ChatbotWidget = () => {
       <div className="fixed bottom-6 right-6 z-50">
         <Button
           onClick={() => setIsOpen(true)}
-          className="rounded-full w-14 h-14 bg-blue-600 hover:bg-blue-700 shadow-lg"
+          className="rounded-full w-14 h-14 text-white hover:opacity-90 shadow-lg"
+          style={{ backgroundColor: '#1B365D' }}
         >
           <MessageCircle className="h-6 w-6" />
         </Button>
@@ -134,7 +135,7 @@ const ChatbotWidget = () => {
       <Card className={`w-80 shadow-xl transition-all duration-300 ${
         isMinimized ? 'h-16' : 'h-96'
       }`}>
-        <CardHeader className="p-4 bg-blue-600 text-white rounded-t-lg">
+        <CardHeader className="p-4 text-white rounded-t-lg" style={{ backgroundColor: '#1B365D' }}>
           <div className="flex items-center justify-between">
             <div className="flex items-center">
               <Bot className="h-5 w-5 mr-2" />
@@ -146,6 +147,7 @@ const ChatbotWidget = () => {
                 size="sm"
                 className="h-6 w-6 p-0 text-white hover:bg-blue-700"
                 onClick={() => setIsMinimized(!isMinimized)}
+                style={{ '--tw-bg-opacity': '0.1' } as React.CSSProperties}
               >
                 {isMinimized ? <Maximize2 className="h-3 w-3" /> : <Minimize2 className="h-3 w-3" />}
               </Button>
@@ -154,6 +156,7 @@ const ChatbotWidget = () => {
                 size="sm"
                 className="h-6 w-6 p-0 text-white hover:bg-blue-700"
                 onClick={() => setIsOpen(false)}
+                style={{ '--tw-bg-opacity': '0.1' } as React.CSSProperties}
               >
                 <X className="h-3 w-3" />
               </Button>
@@ -173,10 +176,12 @@ const ChatbotWidget = () => {
                     message.isBot ? 'flex-row' : 'flex-row-reverse space-x-reverse'
                   }`}>
                     <div className={`p-2 rounded-full ${
-                      message.isBot ? 'bg-blue-100' : 'bg-gray-100'
-                    }`}>
+                      message.isBot ? '' : 'bg-gray-100'
+                    }`}
+                    style={message.isBot ? { backgroundColor: '#E8DCC0' } : {}}
+                    >
                       {message.isBot ? (
-                        <Bot className="h-3 w-3 text-blue-600" />
+                        <Bot className="h-3 w-3" style={{ color: '#1B365D' }} />
                       ) : (
                         <User className="h-3 w-3 text-gray-600" />
                       )}
@@ -184,8 +189,10 @@ const ChatbotWidget = () => {
                     <div className={`p-3 rounded-lg ${
                       message.isBot 
                         ? 'bg-gray-100 text-gray-800' 
-                        : 'bg-blue-600 text-white'
-                    }`}>
+                        : 'text-white'
+                    }`}
+                    style={!message.isBot ? { backgroundColor: '#1B365D' } : {}}
+                    >
                       <p className="text-sm whitespace-pre-line">{message.text}</p>
                       <p className="text-xs mt-1 opacity-70">
                         {formatTime(message.timestamp)}
@@ -198,8 +205,8 @@ const ChatbotWidget = () => {
               {isTyping && (
                 <div className="flex justify-start">
                   <div className="flex items-start space-x-2">
-                    <div className="p-2 rounded-full bg-blue-100">
-                      <Bot className="h-3 w-3 text-blue-600" />
+                    <div className="p-2 rounded-full" style={{ backgroundColor: '#E8DCC0' }}>
+                      <Bot className="h-3 w-3" style={{ color: '#1B365D' }} />
                     </div>
                     <div className="p-3 rounded-lg bg-gray-100">
                       <div className="flex space-x-1">
@@ -228,7 +235,8 @@ const ChatbotWidget = () => {
                   onClick={handleSendMessage}
                   disabled={!inputMessage.trim() || isTyping}
                   size="sm"
-                  className="px-3"
+                  className="px-3 text-white hover:opacity-90"
+                  style={{ backgroundColor: '#1B365D' }}
                 >
                   <Send className="h-4 w-4" />
                 </Button>
