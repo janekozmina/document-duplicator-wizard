@@ -108,12 +108,12 @@ const Login = () => {
               </div>
             </form>
             
-            <div className="mt-6 p-4 rounded-lg" style={{ backgroundColor: '#E8DCC0' }}>
-              <h3 className="font-medium mb-2" style={{ color: '#0F172A' }}>Test Credentials:</h3>
-              <div className="text-sm space-y-1" style={{ color: '#5A4A3A' }}>
+            <div className="mt-6 p-4 rounded-lg" style={{ backgroundColor: '#1E3A8A' }}>
+              <h3 className="font-medium mb-2 text-white">Test Credentials:</h3>
+              <div className="text-sm space-y-1 text-white">
                 <p><strong>Email:</strong> admin@centralbank.gov</p>
                 <p><strong>Password:</strong> CentralBank2024!</p>
-                <p className="text-xs mt-2" style={{ color: '#8B7355' }}>
+                <p className="text-xs mt-2 text-white opacity-80">
                   Use these credentials to test the login flow, followed by{" "}
                   <Link to="/mfa" className="underline font-medium" style={{ color: '#D4AF37' }}>
                     MFA verification

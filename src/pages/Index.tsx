@@ -68,7 +68,7 @@ const Index = () => {
                       </CardDescription>
                     </div>
                   </div>
-                  <Button asChild className="bg-blue-600 hover:bg-blue-700">
+                  <Button asChild style={{ backgroundColor: '#1E3A8A' }} className="text-white hover:opacity-90">
                     <Link to="/onboarding">
                       <Zap className="h-4 w-4 mr-2" />
                       Start Tour

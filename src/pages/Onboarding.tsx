@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Header } from "@/components/Header";
 import { Sidebar } from "@/components/Sidebar";
@@ -182,7 +183,7 @@ const Onboarding = () => {
                   }`}
                   style={index === currentStep ? { 
                     borderColor: '#0F172A',
-                    backgroundColor: '#E8DCC0'
+                    backgroundColor: '#1E3A8A'
                   } : {}}
                 >
                   <CardContent className="p-4">
@@ -199,8 +200,8 @@ const Onboarding = () => {
                         <stepItem.icon className="h-4 w-4" />
                       </div>
                       <div>
-                        <h3 className="font-medium text-sm" style={index === currentStep ? { color: '#0F172A' } : {}}>{stepItem.title}</h3>
-                        <p className="text-xs text-gray-600">{stepItem.description}</p>
+                        <h3 className={`font-medium text-sm ${index === currentStep ? 'text-white' : ''}`}>{stepItem.title}</h3>
+                        <p className={`text-xs ${index === currentStep ? 'text-white opacity-80' : 'text-gray-600'}`}>{stepItem.description}</p>
                       </div>
                     </div>
                   </CardContent>

@@ -178,10 +178,10 @@ const ChatbotWidget = () => {
                     <div className={`p-2 rounded-full ${
                       message.isBot ? '' : 'bg-gray-100'
                     }`}
-                    style={message.isBot ? { backgroundColor: '#E8DCC0' } : {}}
+                    style={message.isBot ? { backgroundColor: '#1E3A8A' } : {}}
                     >
                       {message.isBot ? (
-                        <Bot className="h-3 w-3" style={{ color: '#0F172A' }} />
+                        <Bot className="h-3 w-3 text-white" />
                       ) : (
                         <User className="h-3 w-3 text-gray-600" />
                       )}
@@ -205,8 +205,8 @@ const ChatbotWidget = () => {
               {isTyping && (
                 <div className="flex justify-start">
                   <div className="flex items-start space-x-2">
-                    <div className="p-2 rounded-full" style={{ backgroundColor: '#E8DCC0' }}>
-                      <Bot className="h-3 w-3" style={{ color: '#0F172A' }} />
+                    <div className="p-2 rounded-full" style={{ backgroundColor: '#1E3A8A' }}>
+                      <Bot className="h-3 w-3 text-white" />
                     </div>
                     <div className="p-3 rounded-lg bg-gray-100">
                       <div className="flex space-x-1">
