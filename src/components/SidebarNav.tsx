@@ -64,7 +64,7 @@ export function SidebarNav() {
                 ? "text-white"
                 : "text-gray-700 hover:bg-gray-100"
             )}
-            style={location.pathname === item.href ? { backgroundColor: '#1B365D' } : {}}
+            style={location.pathname === item.href ? { backgroundColor: '#0F172A' } : {}}
           >
             <item.icon className="mr-2 h-4 w-4" />
             {item.title}

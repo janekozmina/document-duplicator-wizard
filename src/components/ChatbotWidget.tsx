@@ -122,7 +122,7 @@ const ChatbotWidget = () => {
         <Button
           onClick={() => setIsOpen(true)}
           className="rounded-full w-14 h-14 text-white hover:opacity-90 shadow-lg"
-          style={{ backgroundColor: '#1B365D' }}
+          style={{ backgroundColor: '#1E3A8A' }}
         >
           <MessageCircle className="h-6 w-6" />
         </Button>
@@ -135,7 +135,7 @@ const ChatbotWidget = () => {
       <Card className={`w-80 shadow-xl transition-all duration-300 ${
         isMinimized ? 'h-16' : 'h-96'
       }`}>
-        <CardHeader className="p-4 text-white rounded-t-lg" style={{ backgroundColor: '#1B365D' }}>
+        <CardHeader className="p-4 text-white rounded-t-lg" style={{ backgroundColor: '#0F172A' }}>
           <div className="flex items-center justify-between">
             <div className="flex items-center">
               <Bot className="h-5 w-5 mr-2" />
@@ -181,7 +181,7 @@ const ChatbotWidget = () => {
                     style={message.isBot ? { backgroundColor: '#E8DCC0' } : {}}
                     >
                       {message.isBot ? (
-                        <Bot className="h-3 w-3" style={{ color: '#1B365D' }} />
+                        <Bot className="h-3 w-3" style={{ color: '#0F172A' }} />
                       ) : (
                         <User className="h-3 w-3 text-gray-600" />
                       )}
@@ -191,7 +191,7 @@ const ChatbotWidget = () => {
                         ? 'bg-gray-100 text-gray-800' 
                         : 'text-white'
                     }`}
-                    style={!message.isBot ? { backgroundColor: '#1B365D' } : {}}
+                    style={!message.isBot ? { backgroundColor: '#0F172A' } : {}}
                     >
                       <p className="text-sm whitespace-pre-line">{message.text}</p>
                       <p className="text-xs mt-1 opacity-70">
@@ -206,7 +206,7 @@ const ChatbotWidget = () => {
                 <div className="flex justify-start">
                   <div className="flex items-start space-x-2">
                     <div className="p-2 rounded-full" style={{ backgroundColor: '#E8DCC0' }}>
-                      <Bot className="h-3 w-3" style={{ color: '#1B365D' }} />
+                      <Bot className="h-3 w-3" style={{ color: '#0F172A' }} />
                     </div>
                     <div className="p-3 rounded-lg bg-gray-100">
                       <div className="flex space-x-1">
@@ -236,7 +236,7 @@ const ChatbotWidget = () => {
                   disabled={!inputMessage.trim() || isTyping}
                   size="sm"
                   className="px-3 text-white hover:opacity-90"
-                  style={{ backgroundColor: '#1B365D' }}
+                  style={{ backgroundColor: '#1E3A8A' }}
                 >
                   <Send className="h-4 w-4" />
                 </Button>

@@ -22,13 +22,13 @@ const Login = () => {
     <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: '#C8B5A0' }}>
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <h1 className="text-2xl font-bold" style={{ color: '#1B365D' }}>Central Bank</h1>
+          <h1 className="text-2xl font-bold" style={{ color: '#0F172A' }}>Central Bank</h1>
           <p className="mt-2" style={{ color: '#5A4A3A' }}>Participants Portal</p>
         </div>
         
         <Card className="shadow-lg border-0">
           <CardHeader>
-            <CardTitle style={{ color: '#1B365D' }}>Sign In</CardTitle>
+            <CardTitle style={{ color: '#0F172A' }}>Sign In</CardTitle>
             <CardDescription>
               Enter your credentials to access the Participants Portal
             </CardDescription>
@@ -36,7 +36,7 @@ const Login = () => {
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="email" style={{ color: '#1B365D' }}>Email</Label>
+                <Label htmlFor="email" style={{ color: '#0F172A' }}>Email</Label>
                 <Input
                   id="email"
                   type="email"
@@ -48,7 +48,7 @@ const Login = () => {
               </div>
               
               <div className="space-y-2">
-                <Label htmlFor="password" style={{ color: '#1B365D' }}>Password</Label>
+                <Label htmlFor="password" style={{ color: '#0F172A' }}>Password</Label>
                 <div className="relative">
                   <Input
                     id="password"
@@ -93,7 +93,7 @@ const Login = () => {
               <Button 
                 type="submit" 
                 className="w-full text-white hover:opacity-90 transition-opacity"
-                style={{ backgroundColor: '#1B365D' }}
+                style={{ backgroundColor: '#1E3A8A' }}
               >
                 Sign In
               </Button>
@@ -109,7 +109,7 @@ const Login = () => {
             </form>
             
             <div className="mt-6 p-4 rounded-lg" style={{ backgroundColor: '#E8DCC0' }}>
-              <h3 className="font-medium mb-2" style={{ color: '#1B365D' }}>Test Credentials:</h3>
+              <h3 className="font-medium mb-2" style={{ color: '#0F172A' }}>Test Credentials:</h3>
               <div className="text-sm space-y-1" style={{ color: '#5A4A3A' }}>
                 <p><strong>Email:</strong> admin@centralbank.gov</p>
                 <p><strong>Password:</strong> CentralBank2024!</p>

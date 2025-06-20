@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Header } from "@/components/Header";
 import { Sidebar } from "@/components/Sidebar";
@@ -129,11 +128,11 @@ const Onboarding = () => {
             <Card className="mb-8">
               <CardHeader className="text-center">
                 <div className="flex justify-center mb-4">
-                  <div className="p-4 rounded-full" style={{ backgroundColor: '#1B365D' }}>
+                  <div className="p-4 rounded-full" style={{ backgroundColor: '#0F172A' }}>
                     <step.icon className="h-8 w-8 text-white" />
                   </div>
                 </div>
-                <CardTitle className="text-2xl" style={{ color: '#1B365D' }}>{step.title}</CardTitle>
+                <CardTitle className="text-2xl" style={{ color: '#0F172A' }}>{step.title}</CardTitle>
                 <CardDescription className="text-lg">{step.description}</CardDescription>
               </CardHeader>
               <CardContent className="text-center">
@@ -150,18 +149,18 @@ const Onboarding = () => {
                   )}
                   
                   {step.link ? (
-                    <Button asChild style={{ backgroundColor: '#1B365D' }} className="text-white hover:opacity-90">
+                    <Button asChild style={{ backgroundColor: '#1E3A8A' }} className="text-white hover:opacity-90">
                       <Link to={step.link}>
                         {step.action}
                         <ArrowRight className="h-4 w-4 ml-2" />
                       </Link>
                     </Button>
                   ) : currentStep === onboardingSteps.length - 1 ? (
-                    <Button onClick={completeOnboarding} style={{ backgroundColor: '#1B365D' }} className="text-white hover:opacity-90">
+                    <Button onClick={completeOnboarding} style={{ backgroundColor: '#1E3A8A' }} className="text-white hover:opacity-90">
                       Complete Tour
                     </Button>
                   ) : (
-                    <Button onClick={nextStep} style={{ backgroundColor: '#1B365D' }} className="text-white hover:opacity-90">
+                    <Button onClick={nextStep} style={{ backgroundColor: '#1E3A8A' }} className="text-white hover:opacity-90">
                       {step.action}
                       <ArrowRight className="h-4 w-4 ml-2" />
                     </Button>
@@ -182,8 +181,7 @@ const Onboarding = () => {
                         : 'hover:bg-gray-50'
                   }`}
                   style={index === currentStep ? { 
-                    ringColor: '#1B365D', 
-                    borderColor: '#1B365D',
+                    borderColor: '#0F172A',
                     backgroundColor: '#E8DCC0'
                   } : {}}
                 >
@@ -196,12 +194,12 @@ const Onboarding = () => {
                             ? 'bg-green-500 text-white' 
                             : 'bg-gray-200 text-gray-600'
                       }`}
-                      style={index === currentStep ? { backgroundColor: '#1B365D' } : {}}
+                      style={index === currentStep ? { backgroundColor: '#0F172A' } : {}}
                       >
                         <stepItem.icon className="h-4 w-4" />
                       </div>
                       <div>
-                        <h3 className="font-medium text-sm" style={index === currentStep ? { color: '#1B365D' } : {}}>{stepItem.title}</h3>
+                        <h3 className="font-medium text-sm" style={index === currentStep ? { color: '#0F172A' } : {}}>{stepItem.title}</h3>
                         <p className="text-xs text-gray-600">{stepItem.description}</p>
                       </div>
                     </div>

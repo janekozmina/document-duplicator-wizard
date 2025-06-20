@@ -36,17 +36,17 @@ const MFA = () => {
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <div className="flex justify-center mb-4">
-            <div className="p-3 rounded-full" style={{ backgroundColor: '#1B365D' }}>
+            <div className="p-3 rounded-full" style={{ backgroundColor: '#0F172A' }}>
               <Shield className="h-8 w-8 text-white" />
             </div>
           </div>
-          <h1 className="text-2xl font-bold" style={{ color: '#1B365D' }}>Two-Factor Authentication</h1>
+          <h1 className="text-2xl font-bold" style={{ color: '#0F172A' }}>Two-Factor Authentication</h1>
           <p className="mt-2" style={{ color: '#5A4A3A' }}>Central Bank - Participants Portal</p>
         </div>
         
         <Card className="shadow-lg border-0">
           <CardHeader>
-            <CardTitle style={{ color: '#1B365D' }}>Enter Verification Code</CardTitle>
+            <CardTitle style={{ color: '#0F172A' }}>Enter Verification Code</CardTitle>
             <CardDescription>
               Please enter the 6-digit code sent to your authenticator app or SMS
             </CardDescription>
@@ -89,7 +89,7 @@ const MFA = () => {
               <Button 
                 type="submit" 
                 className="w-full text-white hover:opacity-90 transition-opacity" 
-                style={{ backgroundColor: '#1B365D' }}
+                style={{ backgroundColor: '#1E3A8A' }}
                 disabled={otpValue.length !== 6 || isVerifying}
               >
                 {isVerifying ? "Verifying..." : "Verify Code"}
@@ -108,7 +108,7 @@ const MFA = () => {
             </form>
             
             <div className="mt-6 p-4 rounded-lg" style={{ backgroundColor: '#E8DCC0' }}>
-              <h3 className="font-medium mb-2" style={{ color: '#1B365D' }}>Test Credentials:</h3>
+              <h3 className="font-medium mb-2" style={{ color: '#0F172A' }}>Test Credentials:</h3>
               <div className="text-sm space-y-1" style={{ color: '#5A4A3A' }}>
                 <p><strong>Valid OTP:</strong> 123456</p>
                 <p><strong>Invalid OTP:</strong> Any other 6-digit code</p>
