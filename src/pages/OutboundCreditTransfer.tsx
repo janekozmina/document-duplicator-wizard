@@ -24,7 +24,7 @@ const OutboundCreditTransfer = () => {
     debtorName: "Alice Smith",
     debtorAccount: "GB29NWBK60161331926820",
     amount: "100.00",
-    currency: "EUR",
+    currency: "AED",
     endToEndId: "E2E-123456789",
   });
   const [result, setResult] = useState<null | { 
@@ -235,6 +235,7 @@ const OutboundCreditTransfer = () => {
                             name="currency" 
                             value={formData.currency} 
                             onChange={handleFormInputChange}
+                            readOnly
                           />
                         </div>
                       </div>
@@ -361,7 +362,7 @@ const defaultXml = `<?xml version="1.0" encoding="UTF-8"?>
       <PmtId>
         <EndToEndId>E2E-123456789</EndToEndId>
       </PmtId>
-      <IntrBkSttlmAmt Ccy="EUR">100.00</IntrBkSttlmAmt>
+      <IntrBkSttlmAmt Ccy="AED">100.00</IntrBkSttlmAmt>
       <Dbtr>
         <Nm>Alice Smith</Nm>
       </Dbtr>

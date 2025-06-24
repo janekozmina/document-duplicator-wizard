@@ -30,7 +30,7 @@ const PaymentReturnReversal = () => {
     creditorName: "Alice Smith",
     creditorAccount: "GB29NWBK60161331926820",
     amount: "100.00",
-    currency: "EUR",
+    currency: "AED",
   });
   const [result, setResult] = useState<null | { 
     status: "success" | "error", 
@@ -434,6 +434,7 @@ const PaymentReturnReversal = () => {
                           name="currency" 
                           value={formData.currency} 
                           onChange={handleFormInputChange}
+                          readOnly
                         />
                       </div>
                     </div>
@@ -562,7 +563,7 @@ const defaultXml = `<?xml version="1.0" encoding="UTF-8"?>
       <MsgId>RETURN-20230608001</MsgId>
       <CreDtTm>2023-06-08T14:07:00Z</CreDtTm>
       <NbOfTxs>1</NbOfTxs>
-      <TtlRtrdIntrBkSttlmAmt Ccy="EUR">100.00</TtlRtrdIntrBkSttlmAmt>
+      <TtlRtrdIntrBkSttlmAmt Ccy="AED">100.00</TtlRtrdIntrBkSttlmAmt>
     </GrpHdr>
     <OrgnlGrpInf>
       <OrgnlMsgId>ORIG-123456789</OrgnlMsgId>
@@ -576,7 +577,7 @@ const defaultXml = `<?xml version="1.0" encoding="UTF-8"?>
         </Rsn>
         <AddtlInf>Insufficient funds</AddtlInf>
       </RtrRsnInf>
-      <RtrdIntrBkSttlmAmt Ccy="EUR">100.00</RtrdIntrBkSttlmAmt>
+      <RtrdIntrBkSttlmAmt Ccy="AED">100.00</RtrdIntrBkSttlmAmt>
       <OrgnlTxRef>
         <Dbtr>
           <Nm>John Doe</Nm>
