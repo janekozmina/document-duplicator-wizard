@@ -21,7 +21,7 @@ import { Link, useNavigate } from "react-router-dom";
 const onboardingSteps = [
   {
     id: 1,
-    title: "Welcome to Participants Portal",
+    title: "Welcome to Onboarding Portal",
     description: "Let's take a quick tour to help you get started with the platform",
     icon: Home,
     content: "This portal provides everything you need to integrate with our payment system, including documentation, API testing tools, and simulators.",

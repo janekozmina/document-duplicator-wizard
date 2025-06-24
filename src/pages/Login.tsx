@@ -23,14 +23,14 @@ const Login = () => {
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <h1 className="text-2xl font-bold" style={{ color: '#0F172A' }}>Central Bank</h1>
-          <p className="mt-2" style={{ color: '#5A4A3A' }}>Participants Portal</p>
+          <p className="mt-2" style={{ color: '#5A4A3A' }}>Onboarding Portal</p>
         </div>
         
         <Card className="shadow-lg border-0">
           <CardHeader>
             <CardTitle style={{ color: '#0F172A' }}>Sign In</CardTitle>
             <CardDescription>
-              Enter your credentials to access the Participants Portal
+              Enter your credentials to access the Onboarding Portal
             </CardDescription>
           </CardHeader>
           <CardContent>

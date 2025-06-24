@@ -41,7 +41,7 @@ const MFA = () => {
             </div>
           </div>
           <h1 className="text-2xl font-bold" style={{ color: '#0F172A' }}>Two-Factor Authentication</h1>
-          <p className="mt-2" style={{ color: '#5A4A3A' }}>Central Bank - Participants Portal</p>
+          <p className="mt-2" style={{ color: '#5A4A3A' }}>Central Bank - Onboarding Portal</p>
         </div>
         
         <Card className="shadow-lg border-0">
